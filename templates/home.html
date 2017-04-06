@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>Website home page</title>
+</head>
+<body>
+<h1><img height="40" src="{{ url_for('static', filename="secret-512.png") }}"/> Home page</h1>
+<p>To see the secret value, enter your name</p>
+
+{% if not ('username' in session) %}
+<form action="secret.html" method="post">
+<p>Name: <input name="username" value="" type="text"/> <input type="submit" value="Go"/> </p>
+</form>
+{% else %}
+    <p>Welcome, back, {{ session['username'] }}</p>
+{% endif %}
+
+</body>
+</html>
